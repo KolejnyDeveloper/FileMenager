@@ -1,0 +1,87 @@
+h1{
+    color: crimson;
+}
+footer{
+    background-color: gray;
+}
+body{
+    background-color: darkblue;
+}
+a:link {
+    color:black;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: black;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: black;
+  }
+  
+  /* selected link */
+  a:active {
+    color: black;
+  }
+#menusek01{
+    clear:none;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.od001{
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+#menu01{
+    display: inline-flex;
+    width: 100%;
+    background-color: royalblue;
+    margin: 0;
+    padding: 0;
+}
+.menu01{
+    display: inline;
+    background-color: royalblue;
+}
+#menu02{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    background-color: gray;
+    height: 590px;
+    /* width: 15%; */
+    flex: 1;
+}
+form{
+    color: whitesmoke;
+    padding-left: 400px;
+    display: inline-block;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+#menu03{
+    vertical-align: top;
+    flex: 6;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    /* width: 80%; */
+    background-color: darkblue;
+}
+.Tyt{
+    height: 30px;
+    padding: 10px;
+    background-color: grey;
+    font-size: 18pt;
+}

@@ -1,0 +1,16 @@
+<div id="menusek01">
+    <div id="menu02">
+        <h3 style="text-align:center; color:lightgray">Multi Upload</h3>
+    </div>
+    <div id="menu03">
+
+        <form enctype="multipart/form-data" action="/handleUpload" method="POST">
+            <h1>Wyślij swoje pliki</h1>
+
+            <input type="file" multiple required name="imagetoupload">
+
+            <input type="submit" value="Wyślij" onclick="fetchPost()">
+        </form>
+
+    </div>
+</div>
