@@ -64,10 +64,6 @@ app.set('views', path.join(__dirname, 'views'));         // ustalamy katalog vie
 app.engine('hbs', hbs({ defaultLayout: 'filemenumain.hbs' }));   // domyślny layout, potem można go zmienić
 app.set('view engine', 'hbs');
 
-app.get("/", function (req, res) {
-    res.render('./fmanager/upload.hbs');   // nie podajemy ścieżki tylko nazwę pliku
-    // res.render('index.hbs', { layout: "main.hbs" }); // opcjonalnie podajemy konkretny layout dla tego widoku
-})
 app.post("/info", function (req, res) {
     console.log("_______________INFO_______________");
     idsel = pliki.filter(x => {
