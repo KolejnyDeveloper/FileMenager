@@ -54,7 +54,11 @@ function plappend(item, index) {
 app.use(express.urlencoded({
     extended: true
 }));
-
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname + "/static/log.html"))
+    // res.render('./fmanager/log.html');   // nie podajemy ścieżki tylko nazwę pliku
+    // res.render('index.hbs', { layout: "main.hbs" }); // opcjonalnie podajemy konkretny layout dla tego widoku
+})
 
 app.set('views', path.join(__dirname, 'views'));         // ustalamy katalog views
 app.engine('hbs', hbs({ defaultLayout: 'filemenumain.hbs' }));   // domyślny layout, potem można go zmienić
@@ -96,20 +100,42 @@ app.post("/down", function (req, res) {
     console.log(idsel[0]['path']);
     res.download(idsel[0]['path']);
 })
+app.post("/upload", function (req, res) {
+    if (req.body.pas == "manager053") {
+        fl = 1;
+        res.render('./fmanager/upload.hbs');   // nie podajemy ścieżki tylko nazwę pliku
+        // res.render('index.hbs', { layout: "main.hbs" }); // opcjonalnie podajemy konkretny layout dla tego widoku
+    }
+    else {
+        fl = 0;
+        res.sendFile(path.join(__dirname + "/static/log.html"))
 
+    }
+})
 app.get("/upload", function (req, res) {
-    res.render('./fmanager/upload.hbs');   // nie podajemy ścieżki tylko nazwę pliku
-    // res.render('index.hbs', { layout: "main.hbs" }); // opcjonalnie podajemy konkretny layout dla tego widoku
+    if (fl == 1) {
+        res.render('./fmanager/upload.hbs');   // nie podajemy ścieżki tylko nazwę pliku
+    }
+    else {
+        fl = 0;
+        res.sendFile(path.join(__dirname + "/static/log.html"))
+    }
 })
 app.get("/filemanager", function (req, res) {
-    let context = {
-        pliki: pliki,
+    if (fl == 1) {
+        let context = {
+            pliki: pliki,
+        }
+        console.log("------------Context---------------")
+        console.log(context)
+        console.log("------------Context---------------")
+        res.render('./fmanager/fm.hbs', context);   // nie podajemy ścieżki tylko nazwę pliku
+        // res.render('index.hbs', { layout: "main.hbs" }); // opcjonalnie podajemy konkretny layout dla tego widoku
     }
-    console.log("------------Context---------------")
-    console.log(context)
-    console.log("------------Context---------------")
-    res.render('./fmanager/fm.hbs', context);   // nie podajemy ścieżki tylko nazwę pliku
-    // res.render('index.hbs', { layout: "main.hbs" }); // opcjonalnie podajemy konkretny layout dla tego widoku
+    else {
+        fl = 0;
+        res.sendFile(path.join(__dirname + "/static/log.html"))
+    }
 })
 
 app.post('/handleUpload', function (req, res) {
