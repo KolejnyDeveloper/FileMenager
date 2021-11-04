@@ -2,7 +2,7 @@ var express = require("express")
 var path = require("path")
 var app = express()
 var formidable = require('formidable');
-var PORT = process.env.PORT || 3000;
+const PORT = 3000;
 var hbs = require('express-handlebars');
 
 var id = 1;
@@ -89,19 +89,12 @@ app.post("/del", function (req, res) {
 })
 app.post("/down", function (req, res) {
     console.log("_______________DOWN_______________");
+
     idsel = pliki.filter(x => {
         return x.id == req.body.id;
     })
+    console.log(idsel[0]['path']);
     res.download(idsel[0]['path']);
-
-    let context = {
-        pliki: pliki,
-    }
-    console.log("------------Context---------------")
-    console.log(context)
-    console.log("------------Context---------------")
-    res.render('./fmanager/fm.hbs', context);   // nie podajemy ścieżki tylko nazwę pliku
-
 })
 
 app.get("/upload", function (req, res) {
